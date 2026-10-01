@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para mi chiquito precioso 💙</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root{--navy:#071b3e;--blue:#123e78;--ice:#dff8ff;--gold:#ffd76a;--pink:#ffb8d0}
+
+*{box-sizing:border-box;margin:0;padding:0} body{min-height:100vh;overflow-x:hidden;background:#071b3e;color:#fff;font-family:'DM Sans',sans-serif}
+
+#pantalla-inicio{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 50% 38%,#245e9b 0,#102f61 40%,#06132f 100%);overflow:hidden}
+
+#pantalla-inicio:before,#pantalla-inicio:after{content:'✦';position:absolute;color:#dff8ff88;font-size:30px;animation:twinkle 2.5s infinite alternate}#pantalla-inicio:before{top:15%;left:18%}#pantalla-inicio:after{right:17%;bottom:20%;font-size:42px;animation-delay:1s}
+
+.intro-card{position:relative;z-index:1;width:min(540px,100%);padding:clamp(28px,6vw,52px) 26px;text-align:center;border:1px solid #ffffff42;border-radius:32px;background:linear-gradient(145deg,#ffffff19,#dff8ff08);box-shadow:0 25px 90px #0007,inset 0 1px #ffffff30;backdrop-filter:blur(15px);animation:float 4s ease-in-out infinite}
+
+.intro-heart{font-size:54px;display:block;margin-bottom:14px;filter:drop-shadow(0 0 18px #ff9bbd88);animation:heartbeat 1.7s infinite}
+
+.intro-card .eyebrow{color:#bcecff;letter-spacing:4px;text-transform:uppercase;font-size:11px;font-weight:700;margin-bottom:12px}
+
+.intro-card h1{font:700 clamp(32px,7vw,52px)/1.12 'Playfair Display',serif;text-shadow:0 4px 24px #020b25;margin-bottom:16px}
+
+.intro-card p{max-width:390px;margin:0 auto 26px;line-height:1.8;color:#e5f4ff;font-size:15px}
+
+#btn-iniciar{border:0;position:relative;overflow:hidden;cursor:pointer;padding:17px 29px;border-radius:999px;color:#08214b;background:linear-gradient(135deg,#fff5cc,#ffd76a 55%,#fff0b0);font:700 15px 'DM Sans',sans-serif;letter-spacing:.3px;box-shadow:0 8px 0 #c18c31,0 14px 35px #0005;transition:transform .2s,box-shadow .2s}
+
+#btn-iniciar:hover{transform:translateY(-3px);box-shadow:0 11px 0 #c18c31,0 20px 38px #0006}#btn-iniciar:active{transform:translateY(4px);box-shadow:0 3px 0 #c18c31}
+
+.intro-note{font-size:12px!important;color:#bdd9f3!important;margin:23px auto 0!important}
+
+#contenido-web{display:none;min-height:100vh;position:relative;isolation:isolate;background:radial-gradient(ellipse at 50% 100%,#174f70 0,#0a2853 42%,#06132d 100%);overflow:hidden}
+
+.night{position:fixed;inset:0;z-index:-2;background:linear-gradient(#07142ee8,#092d54c9),url('https://i.pinimg.com/736x/a0/73/56/a07356dbd5911c2fc768256c9349a411.jpg') center/cover no-repeat;opacity:.9}
+
+.stars{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(2px 2px at 15% 22%,#fff 60%,transparent),radial-gradient(1px 1px at 72% 13%,#fff 60%,transparent),radial-gradient(2px 2px at 88% 45%,#b9edff 60%,transparent),radial-gradient(1px 1px at 34% 62%,#fff 60%,transparent),radial-gradient(2px 2px at 62% 75%,#fff 60%,transparent),radial-gradient(1px 1px at 9% 82%,#fff 60%,transparent);background-size:360px 280px;animation:starDrift 35s linear infinite}
+
+.special-text{position:relative;z-index:5;text-align:center;padding:32px 16px 0;color:#e4caff;font:700 clamp(25px,5.5vw,48px)/1.25 'Playfair Display',serif;text-shadow:0 0 24px #a9cfff88;animation:fadeUp 1.5s both}
+
+.subtitle{text-align:center;color:#d8efff;margin:12px auto 0;padding:0 20px;max-width:680px;font-size:clamp(13px,2vw,16px);line-height:1.8;position:relative;z-index:5}
+
+.garden{position:relative;height:clamp(410px,66vh,650px);min-height:410px;max-width:1200px;margin:0 auto;perspective:900px}
+
+.flower{position:absolute;bottom:0;width:clamp(82px,12vw,145px);height:var(--height,390px);transform-origin:bottom center;animation:sway var(--sway,4s) ease-in-out infinite;animation-delay:var(--delay,0s);cursor:pointer;z-index:2;transition:filter .25s}
+
+.flower:hover{filter:brightness(1.18) drop-shadow(0 0 16px #ffd76a55)}.flower::before{content:'';position:absolute;bottom:0;left:50%;width:8px;height:calc(100% - 75px);border-radius:100% 100% 0 0;transform:translateX(-50%);background:linear-gradient(90deg,#164a37,#4d9a5e,#1a513d);box-shadow:0 0 10px #59b97a25}
+
+.flower::after{content:'';position:absolute;bottom:28%;left:50%;width:55px;height:25px;border-radius:100% 0 100% 0;background:linear-gradient(135deg,#76bc69,#1d704b);transform:rotate(-28deg);transform-origin:left center;box-shadow:inset 0 0 8px #b4ef8a55}
+
+.bloom{position:absolute;left:50%;top:0;width:clamp(75px,10vw,118px);height:clamp(75px,10vw,118px);transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,#704018 0 22%,#45230e 23% 29%,transparent 30%);z-index:2;filter:drop-shadow(0 7px 10px #0005)}
+
+.bloom img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;border:5px solid #ffd76a;box-shadow:0 0 0 3px #fff6,0 0 24px #ffd76a66;transition:transform .3s}
+
+.flower:hover .bloom img{transform:scale(1.08)}.flower:nth-child(1){left:2%;--height:340px;--delay:-.5s}.flower:nth-child(2){left:13%;--height:410px;--delay:-1.4s}.flower:nth-child(3){left:24%;--height:300px;--delay:-.8s}.flower:nth-child(4){left:35%;--height:445px;--delay:-2s}.flower:nth-child(5){left:45%;--height:355px;--delay:-1s}.flower:nth-child(6){left:56%;--height:420px;--delay:-2.5s}.flower:nth-child(7){left:67%;--height:320px;--delay:-.6s}.flower:nth-child(8){left:77%;--height:405px;--delay:-1.7s}.flower:nth-child(9){left:86%;--height:345px;--delay:-.3s}.flower:nth-child(10){left:92%;--height:390px;--delay:-1.1s}
+
+.ground{position:absolute;bottom:-5px;left:-10%;width:120%;height:65px;background:linear-gradient(#174d46,#061b2e);border-radius:50% 50% 0 0;filter:blur(4px);z-index:3}
+
+.garden-hint{text-align:center;position:relative;z-index:5;margin:-10px 16px 35px;color:#d5eaff;font-size:13px;letter-spacing:.5px}.garden-hint span{display:inline-block;padding:10px 17px;border:1px solid #ffffff25;background:#071b3e80;border-radius:99px;backdrop-filter:blur(8px)}
+
+#modal-flor{display:none;position:fixed;inset:0;z-index:10000;align-items:center;justify-content:center;padding:18px;background:#020817d9;backdrop-filter:blur(12px);overflow-y:auto;animation:fadeIn .25s ease}
+
+.letter-card{position:relative;width:min(570px,100%);max-height:92vh;overflow-y:auto;border-radius:28px;border:1px solid #ffffff50;background:linear-gradient(150deg,#f9fcff,#e9f4ff 48%,#fff3e6);color:#18345b;box-shadow:0 30px 100px #0009;animation:cardIn .45s cubic-bezier(.2,.8,.2,1);}
+
+.letter-top{height:150px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at 50% 70%,#4d88bb,#173f78 65%,#0a2149)}
+
+.letter-top:before{content:'✦  ·  ✧  ·  ✦';position:absolute;top:15px;left:0;right:0;text-align:center;color:#fff9;letter-spacing:13px}.letter-top .modal-emoji{font-size:58px;filter:drop-shadow(0 0 20px #ffdb8a);animation:heartbeat 1.8s infinite}
+
+#cerrar-modal{position:absolute;top:12px;right:14px;width:38px;height:38px;z-index:3;border:1px solid #ffffff55;border-radius:50%;background:#ffffff1f;color:#fff;font-size:26px;line-height:1;cursor:pointer;transition:background .2s,transform .2s}#cerrar-modal:hover{background:#ffffff40;transform:rotate(90deg)}
+
+.letter-body{padding:26px clamp(20px,5vw,38px) 30px}.letter-kicker{text-transform:uppercase;font-size:10px;letter-spacing:3px;font-weight:700;color:#6484a8;margin-bottom:8px}#modal-title{font:700 clamp(25px,5vw,34px)/1.2 'Playfair Display',serif;color:#12366a;margin-bottom:16px}#modal-msg{font-size:15px;line-height:1.95;color:#294365;white-space:pre-line}#modal-msg::first-letter{color:#c65e88}.letter-sign{border-top:1px solid #c9d9e9;margin-top:22px;padding-top:17px;font:600 17px 'Playfair Display',serif;color:#a44c77}.letter-footer{text-align:center;padding:0 20px 25px;color:#7188a4;font-size:11px;letter-spacing:1px}
+
+#cerrar-abajo{display:block;margin:22px auto 0;border:0;border-radius:99px;padding:12px 22px;background:linear-gradient(135deg,#17457f,#0a2b58);color:#fff;font-weight:700;cursor:pointer;box-shadow:0 5px 14px #153b6b33;transition:transform .2s}#cerrar-abajo:hover{transform:translateY(-2px)}
+
+.particles{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:4}.particle{position:absolute;bottom:-15px;width:5px;height:5px;background:#eafaff;border-radius:50%;box-shadow:0 0 12px #9ee9ff;animation:particleUp 5s linear forwards;opacity:.7}
+
+@keyframes twinkle{to{opacity:.25;transform:scale(.7) rotate(35deg)}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}@keyframes heartbeat{0%,100%{transform:scale(1)}12%{transform:scale(1.1)}22%{transform:scale(1)}}@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes cardIn{from{opacity:0;transform:translateY(24px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes starDrift{to{background-position:0 500px}}@keyframes particleUp{to{transform:translateY(-110vh) translateX(35px);opacity:0}}
+
+@media(max-width:650px){.garden{height:460px;min-height:460px;transform:scale(.98);transform-origin:bottom center}.flower{width:75px}.flower:nth-child(1){left:-2%;--height:255px}.flower:nth-child(2){left:8%;--height:315px}.flower:nth-child(3){left:18%;--height:235px}.flower:nth-child(4){left:28%;--height:340px}.flower:nth-child(5){left:39%;--height:275px}.flower:nth-child(6){left:49%;--height:320px}.flower:nth-child(7){left:59%;--height:250px}.flower:nth-child(8){left:69%;--height:310px}.flower:nth-child(9){left:79%;--height:260px}.flower:nth-child(10){left:88%;--height:300px}.bloom{width:72px;height:72px}.flower::after{width:38px;height:19px}.special-text{padding-top:25px}.subtitle{max-width:420px}.letter-top{height:120px}.letter-body{padding-top:22px}#modal-msg{font-size:14px;line-height:1.85}}
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+
+.modal-image-container {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+
+}
+
+
+
+.modal-img {
+
+    display: block;
+
+    width: 100%;
+
+    max-width: 340px;
+
+    height: 230px;
+
+    object-fit: cover;
+
+
+
+    border-radius: 24px;
+
+
+
+    border: 5px solid #ffd76a;
+
+
+
+    background: #dceeff;
+
+
+
+    box-shadow:
+
+        0 10px 30px rgba(0, 0, 0, .25),
+
+        0 0 0 4px rgba(255, 255, 255, .7);
+
+
+
+    transition:
+
+        transform .3s ease,
+
+        box-shadow .3s ease;
+
+}
+
+
+
+.modal-img:hover {
+
+    transform: scale(1.03);
+
+
+
+    box-shadow:
+
+        0 15px 35px rgba(0, 0, 0, .3),
+
+        0 0 0 4px rgba(255, 255, 255, .8);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<audio id="musica-fondo" src="https://github.com/Baque2005/public-files/raw/refs/heads/main/2025/new%20west%20-%20those%20eyes%20%20sub.%20espa%C3%B1ol.mp3" preload="auto"></audio>
+
+<div id="pantalla-inicio">
+
+  <div class="intro-card">
+
+    <span class="intro-heart">💙</span>
+
+    <div class="eyebrow">Un pequeño universo para ti</div>
+
+    <h1>Para mi chiquito precioso</h1>
+
+    <p>Preparé este rinconcito con mucho amor. Hay palabras que a veces no sé cómo decirte, así que las convertí en pequeñas sorpresas para tu corazón.</p>
+
+    <button id="btn-iniciar" type="button">💌 Apreta aquí, mi amor</button>
+
+    <p class="intro-note">Hecho especialmente para ti · Toca las flores para descubrir tus mensajes ✨</p>
+
+  </div>
+
+</div>
+
+<div id="contenido-web">
+
+  <div class="night"></div><div class="stars"></div><div class="particles" id="particles"></div>
+
+  <header>
+
+    <h1 class="special-text">¡Feliz 30 de septiembre, mi chiquito precioso! 💙</h1>
+
+    <p class="subtitle">Si pudiera regalarte algo hoy, sería la oportunidad de verte con mis ojos para que entiendas lo especial, valioso y amado que eres para mí.</p>
+
+  </header>
+
+  <main class="garden" aria-label="Jardín de mensajes románticos">
+
+    <div class="flower" role="button" tabindex="0" aria-label="Abrir mensaje 1" data-index="0"><div class="bloom"><img src="https://i.pinimg.com/736x/48/73/32/4873329538169dc4a690e0325b1c87a0.jpg" alt="Flor para ti"></div></div>
+
+    <div class="flower" role="button" tabindex="0" aria-label="Abrir mensaje 2" data-index="1"><div class="bloom"><img src="https://i.pinimg.com/736x/79/ec/ac/79ecac74713a50d35d39a1d94245ed99.jpg" alt="Flor para ti"></div></div>
+
+    <div class="flower" role="button" tabindex="0" aria-label="Abrir mensaje 3" data-index="2"><div class="bloom"><img src="https://i.pinimg.com/736x/7b/d2/0c/7bd20c24c575ecfa621727b59c50881d.jpg" alt="Flor para ti"></div></div>
+
+    <div class="flower" role="button" tabindex="0" aria-label="Abrir mensaje 4" data-index="3"><div class="bloom"><img src="https://i.pinimg.com/736x/2f/a2/40/2fa24003df141ce44c1faebed7657b51.jpg" alt="Flor para ti"></div></div>
+
+    <div class="flower" role="button" tabindex="0" aria-label="Abrir mensaje 5" data-index="4"><div class="bloom"><img src="https://i.pinimg.com/736x/52/0e/a0/520ea07326484c50977b05b4442712f5.jpg" alt="Flor para ti"></div></div>
+
+    <div class="flower" role="button" tabindex="0" aria-label="Abrir mensaje 6" data-index="5"><div class="bloom"><img src="https://i.pinimg.com/736x/82/86/98/8286980b7ca92cd3d8f9cd2738525b2a.jpg" alt="Flor para ti"></div></div>
+
+    <div class="flower" role="button" tabindex="0" aria-label="Abrir mensaje 7" data-index="6"><div class="bloom"><img src="https://i.pinimg.com/736x/5b/28/b1/5b28b1b0387d59879ab0b05362464191.jpg" alt="Flor para ti"></div></div>
+
+    <div class="flower" role="button" tabindex="0" aria-label="Abrir mensaje 8" data-index="7"><div class="bloom"><img src="https://i.pinimg.com/736x/15/76/be/1576be07ee594d50adc162d149a78e2b.jpg" alt="Flor para ti"></div></div>
+
+    <div class="flower" role="button" tabindex="0" aria-label="Abrir mensaje 9" data-index="8"><div class="bloom"><img src="https://i.pinimg.com/736x/60/05/60/600560f3e38976209ce7c4f862393c70.jpg" alt="Flor para ti"></div></div>
+
+    <div class="flower" role="button" tabindex="0" aria-label="Abrir mensaje 10" data-index="9"><div class="bloom"><img src="https://i.pinimg.com/736x/cc/c6/9b/ccc69b6660a0e462f0d79590582573fd.jpg" alt="Flor para ti"></div></div>
+
+    <div class="ground"></div>
+
+  </main>
+
+  <div class="garden-hint"><span>🌻 Toca cada flor y descubre una parte de mi corazón 💌</span></div>
+
+</div>
+
+<div id="modal-flor" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+
+  <article class="letter-card">
+
+    <button id="cerrar-modal" type="button" aria-label="Cerrar mensaje">×</button>
+
+    <div class="letter-top"><span class="modal-emoji" id="modal-emoji">💌</span></div>
+
+    <div class="letter-body">
+
+
+
+    <div class="modal-image-container">
+
+        <img
+
+            id="modal-img"
+
+            class="modal-img"
+
+            src="./imagen1.png"
+
+            alt="Imagen especial"
+
+        >
+
+    </div>
+
+
+
+    <div class="letter-kicker">
+
+        Una carta escrita con amor
+
+    </div>
+
+
+
+    <h2 id="modal-title">
+
+        Para ti, mi amor
+
+    </h2>
+
+
+
+    <div id="modal-msg"></div>
+
+
+
+    <div class="letter-sign">
+
+        Con todo mi corazón, para ti. 💙
+
+    </div>
+
+
+
+    <button id="cerrar-abajo" type="button">
+
+        Guardar este mensajito en mi corazón ♡
+
+    </button>
+
+
+
+</div>
+
+  </article>
+
+</div>
+
+<script>
+
+// La música conserva el mismo archivo y la misma lógica de reproducción al iniciar.
+
+const floresData = [
+
+ {title:'Mi lugar favorito',emoji:'💗',img:'imagen1.png',msg:'Mi amor, no importa cuántos lugares hermosos existan en este mundo: mi lugar favorito siempre será donde estés tú. Contigo, hasta los momentos más sencillos se convierten en recuerdos que quiero guardar para siempre.\n\nQuiero seguir riéndome contigo, abrazarte cuando el día pese demasiado y caminar a tu lado incluso cuando el camino no sea fácil. No necesito que todo sea perfecto; solo quiero que sigamos cuidando este amor con paciencia, respeto y ternura.\n\nSi algún día me preguntan dónde quiero estar, mi respuesta seguirá siendo la misma: contigo. ❤️'},
+
+ {title:'Gracias por existir',emoji:'🥹',img:'imagen2.png',msg:'Gracias por llegar a mi vida y convertirte en una de mis razones favoritas para sonreír. A veces quizá no te das cuenta de lo mucho que significan para mí tus palabras, tus abrazos, tus ocurrencias y esos pequeños detalles que haces sin pensarlo.\n\nQuiero que sepas que tu presencia importa, que tu esfuerzo vale y que mereces recibir el mismo cariño bonito que tantas veces entregas. Ojalá nunca olvides lo especial que eres, incluso en los días en los que tú mismo no puedas verlo.\n\nDe todas las casualidades de mi vida, conocerte es una de las que más agradezco. 💙'},
+
+ {title:'Siempre te elegiría',emoji:'🌙',img:'imagen3.png',msg:'Si pudiera volver al momento en que nuestros caminos se cruzaron, volvería a elegir conocerte. Elegiría las risas, las conversaciones, las miradas y cada recuerdo que poco a poco hemos ido construyendo.\n\nNo te prometo una historia sin dificultades, porque la vida no funciona así. Pero sí deseo que nunca nos falten las ganas de escucharnos, comprendernos y encontrar juntos una forma de seguir creciendo.\n\nEntre tantas personas y tantos caminos, mi corazón se alegra de haberte encontrado a ti. Una y otra vez, te elegiría con cariño. 💕'},
+
+ {title:'Estoy orgullosa de ti',emoji:'✨',img:'imagen4.png',msg:'Mi chiquito precioso, quiero recordarte que eres capaz de mucho más de lo que a veces imaginas. Sé que habrá días en los que te sientas cansado, en los que las cosas no salgan como esperabas o en los que dudes de ti mismo. Cuando eso ocurra, respira y recuerda todo lo que ya has superado.\n\nNo tienes que resolverlo todo en un solo día ni ser fuerte a cada instante. También puedes descansar, pedir ayuda y volver a intentarlo a tu ritmo. Yo deseo verte cumplir tus sueños, disfrutar tus logros y aprender de cada experiencia.\n\nEstoy orgullosa de la persona que eres y de la persona en la que te estás convirtiendo. Nunca dejes de creer en ti. 🌟'},
+
+ {title:'Los pequeños detalles',emoji:'🌷',img:'imagen5.png',msg:'Mi amor, para mí el amor vive en los detalles pequeños: en preguntar cómo estuvo tu día, en recordar algo que te hizo ilusión, en compartir una risa inesperada y en sentir paz cuando estamos juntos.\n\nNo necesito regalos enormes ni momentos perfectos para sentirme afortunada. Muchas veces me basta con tu compañía, con escucharte hablar de lo que te gusta o con saber que, aunque cada uno tenga sus responsabilidades, encontramos un ratito para nosotros.\n\nQuiero seguir llenando nuestra historia de esos detalles que quizá parezcan simples, pero que para mí significan muchísimo. 💞'},
+
+ {title:'Tu corazón también merece cuidado',emoji:'🫶',img:'imagen6.png',msg:'Así como tú puedes ser un apoyo para quienes amas, también mereces que te cuiden, te escuchen y te acompañen. No tienes que guardarte todas tus preocupaciones ni fingir que todo está bien para demostrar fortaleza.\n\nQuiero que conmigo puedas ser tú mismo: hablar de tus sueños, contarme tus miedos y compartir tus alegrías sin sentir que debes tener todas las respuestas. Tu bienestar, tus emociones y tu tranquilidad también importan.\n\nOjalá la vida te regale razones para sonreír, fuerza para continuar y personas que sepan valorar el corazón tan bonito que tienes. Yo quiero seguir aprendiendo a amarte de una manera que te haga bien. 💙'},
+
+ {title:'Construyamos nuestros sueños',emoji:'🌠',img:'imagen7.png',msg:'Cuando imagino el futuro, no sueño con una vida perfecta. Sueño con una vida en la que podamos crecer, apoyarnos y celebrar los pasos pequeños tanto como los grandes.\n\nQuiero verte alcanzar tus metas, descubrir nuevas cosas, sentirte orgulloso de ti y recordar que no tienes que tener todo resuelto ahora mismo. Cada sueño necesita tiempo, paciencia y valentía; avanza poco a poco, porque incluso los pasos pequeños te acercan a donde quieres llegar.\n\nMe ilusiona pensar en todos los recuerdos que todavía nos esperan y en las historias que aún no hemos vivido. Ojalá sigamos acompañándonos con amor y sinceridad. ✨'},
+
+ {title:'Cuando tengas un día difícil',emoji:'🤍',img:'imagen8.png',msg:'Si hoy estás cansado, si algo te preocupa o si sientes que el mundo va demasiado rápido, quiero que recuerdes que no tienes que poder con todo al mismo tiempo. Date permiso para descansar y tratarte con la misma paciencia que tendrías con alguien a quien amas.\n\nUn mal día no define tu vida, un error no borra tus esfuerzos y una dificultad no significa que hayas fracasado. A veces avanzar es simplemente levantarte, intentarlo otra vez o darte un momento para recuperar fuerzas.\n\nDeseo que nunca te falten motivos para continuar y que puedas mirar hacia ti con orgullo y ternura. Te mando un abrazo enorme, de esos que dicen: respira, mi amor, paso a paso. 🫂'},
+
+ {title:'Mi pensamiento bonito',emoji:'💌',img:'image.png',msg:'Hay momentos en los que estoy haciendo cualquier cosa y, de pronto, apareces en mis pensamientos. Recuerdo una palabra tuya, una risa, una mirada o algo pequeño que vivimos, y sin darme cuenta sonrío.\n\nMe gusta que formes parte de mis días incluso cuando no estamos juntos. Me gusta imaginar las cosas que quiero contarte, pensar en el próximo abrazo y guardar detalles que quizá tú ya olvidaste, pero que para mí fueron especiales.\n\nEres ese pensamiento bonito que llega sin avisar y me recuerda que tengo a alguien a quien quiero muchísimo. Gracias por formar parte de mi historia. ❤️'},
+
+ {title:'Para siempre, con amor',emoji:'💖',img:'imagen9.png',msg:'No puedo adivinar todo lo que nos traerá la vida, pero sí puedo decirte que hoy me hace feliz compartir este camino contigo. Quiero seguir conociéndote, descubrir nuevas versiones de ti y de mí, y aprender a cuidar lo nuestro sin dejar de crecer como personas.\n\nDeseo que nunca nos falten las conversaciones sinceras, las disculpas cuando hagan falta, las risas espontáneas y las ganas de volver a encontrarnos después de un día largo. Que nuestro amor sea un lugar donde ambos podamos sentirnos respetados, tranquilos y libres de ser quienes somos.\n\nTe amo, mi chiquito precioso. Gracias por ser tú, por los recuerdos que ya tenemos y por todos los momentos bonitos que todavía podemos construir. Si mi corazón pudiera escribir el nombre de alguien en esta pequeña carta, escribiría el tuyo. 💙'}
+
+];
+
+const modal = document.getElementById('modal-flor');
+
+
+
+const modalTitle = document.getElementById('modal-title');
+
+
+
+const modalMsg = document.getElementById('modal-msg');
+
+
+
+const modalEmoji = document.getElementById('modal-emoji');
+
+
+
+const modalImg = document.getElementById('modal-img');
+
+
+
+
+
+function mostrarModalFlor(idx) {
+
+
+
+    const item = floresData[idx];
+
+
+
+    if (!item) {
+
+        console.log("No existe la flor:", idx);
+
+        return;
+
+    }
+
+
+
+    console.log("Abriendo carta:", item.title);
+
+    console.log("Imagen:", item.img);
+
+
+
+    // Texto
+
+    modalTitle.textContent = item.title;
+
+
+
+    modalMsg.textContent = item.msg;
+
+
+
+    modalEmoji.textContent = item.emoji;
+
+
+
+
+
+    // IMAGEN
+
+    modalImg.style.display = 'block';
+    modalImg.src = "./" + item.img;
+
+
+
+    modalImg.alt = item.title;
+
+
+
+
+
+    // Mostrar modal
+
+    modal.style.display = 'flex';
+
+
+
+    document.body.style.overflow = 'hidden';
+
+
+
+
+
+    document.getElementById('cerrar-modal').focus();
+
+}
+
+
+
+
+
+function cerrarModal() {
+
+
+
+    modal.style.display = 'none';
+
+
+
+    document.body.style.overflow = '';
+
+
+
+}
+
+modalImg.addEventListener('load', function() {
+
+
+
+    console.log(
+
+        "✅ Imagen cargada correctamente:",
+
+        modalImg.src
+
+    );
+
+
+
+});
+
+
+
+
+
+modalImg.addEventListener('error', function() {
+
+
+
+    console.error(
+
+        "❌ NO SE ENCUENTRA LA IMAGEN:",
+
+        modalImg.src
+
+    );
+
+
+
+    modalImg.style.display = 'none';
+
+
+
+});
+
+
+
+
+
+// ================================
+// CONTROLES DE LA PAGINA
+// ================================
+
+const flores = document.querySelectorAll('.flower');
+
+flores.forEach((flor) => {
+    flor.addEventListener('click', () => {
+        const idx = Number(flor.dataset.index);
+        mostrarModalFlor(idx);
+    });
+
+    flor.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const idx = Number(flor.dataset.index);
+            mostrarModalFlor(idx);
+        }
+    });
+});
+
+document.getElementById('cerrar-modal').addEventListener('click', cerrarModal);
+document.getElementById('cerrar-abajo').addEventListener('click', cerrarModal);
+
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) cerrarModal();
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.style.display === 'flex') {
+        cerrarModal();
+    }
+});
+
+// Si una imagen falla, mostramos una alternativa visual y permitimos
+// seguir usando las demás tarjetas.
+modalImg.addEventListener('load', () => {
+    modalImg.style.display = 'block';
+});
+
+modalImg.addEventListener('error', () => {
+    console.error('No se pudo cargar:', modalImg.src);
+    modalImg.style.display = 'block';
+    modalImg.alt = 'No se encontró esta imagen';
+});
+
+// Pantalla inicial + música
+const btnIniciar = document.getElementById('btn-iniciar');
+const pantallaInicio = document.getElementById('pantalla-inicio');
+const contenidoWeb = document.getElementById('contenido-web');
+const musica = document.getElementById('musica-fondo');
+
+btnIniciar.addEventListener('click', async () => {
+    pantallaInicio.style.display = 'none';
+    contenidoWeb.style.display = 'block';
+
+    try {
+        musica.volume = 0.45;
+        await musica.play();
+    } catch (error) {
+        console.log('La reproducción automática fue bloqueada por el navegador.');
+    }
+});
+
+// Partículas flotantes
+const particles = document.getElementById('particles');
+
+function crearParticula() {
+    const p = document.createElement('span');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (4 + Math.random() * 4) + 's';
+    p.style.width = p.style.height = (3 + Math.random() * 4) + 'px';
+    particles.appendChild(p);
+
+    setTimeout(() => p.remove(), 8500);
+}
+
+setInterval(crearParticula, 650);
+
+</script>
+
+</body>
+
+</html>
